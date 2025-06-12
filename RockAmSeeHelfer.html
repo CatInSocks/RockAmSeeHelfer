@@ -35,18 +35,53 @@
                         const infoList = document.getElementById('infolist');
                         information.forEach(user => {
                             const listItem = document.createElement('li');
-                            listItem.textContent = user.keys();
-                            //wie rufe ich die keys ab?
+                            listItem.textContent = Object.keys(user).join(', ');
                             infoList.appendChild(listItem);
-                        });)
+                        });
+                    } catch (error) {
+                        console.error('Fehler beim Abrufen der Informationen:', error);
                     }
                 }
+                fetchInformation();
             </script>
         </section>
         <section id="events">
             <h2>Veranstaltungen</h2>
             <p>Hier findest du alle Veranstaltungen, bei denen du dich als Helfer:in anmelden kannst.</p>
-            <p>Tabelle: Links events, Mitte </p>
+            <table id="myEventtable">
+                <tbody>
+                    <th>Event</th>
+                    <th>Beschreibung</th>
+                    <th>Anforderungen an Mitarbeiter</th>
+                </tbody>
+                <tr>
+                    <td>Hardcorestricken für Anfänger</td>
+                    <td>Wir stricken gemeinsam Teufelshörner.</td>
+                    <td>Alter: 18+, Country</td>
+                </tr>
+                <tr>
+                    <td>Niederländisch für Notsituationen</td>
+                    <td>Ein traditionelles Fest am See mit verschiedenen Aktivitäten und Attraktionen.</td>
+                    <td>Alter: 16+, für Personen, die nicht aus den Niederlanden stammen</td>
+                </tr>
+                <tr>
+                    <td>
+                        <input id="addevent" type='text' type='color' name='Event' placeholde='Event'>
+                    </td>
+                    <td>
+                        <input id="addevent" type='text' type='color' name='Beschreibung' placeholde='Beschreibung'>
+                    </td>
+                    <td>
+                        <input id="addevent" type='text' type='color' name='Anforderung' placeholde='Anforderung'>
+                    </td>
+                </tr>
+            </table>
+            <input type='button' value='Event hinzufügen' onClick='clone_this()'>
+            <script>
+                  myEventtable.insertRow(myEventtable.rows.length - 1);
+                  input.addEventListener('change', function () {
+                  text.style.color = this.value;});
+            </script>
         </section>
         <section id="helpers">
             <h2>Helfer:innen</h2>
